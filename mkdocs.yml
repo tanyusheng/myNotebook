@@ -1,16 +1,18 @@
 # Project information
-site_name: Xiaoyu NoteBook
+site_name: 小雨的个人博客
 site_author: Matrix Swift
 
 # Copyright
-copyright: <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备17025207号-1</a>
+copyright: <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备17025207号-1</a> </br>Copyright © 2015 - 2023 Matrix Swift
+
 
 # Configuration
 theme:
   name: material
+  custom_dir: docs/theme_override_home/
   favicon: assets/water.png
   icon:  
-    logo: material/cat
+    logo: fontawesome/solid/cloud-rain
   features:
     - search.suggest
     - search.highlight
@@ -34,6 +36,7 @@ theme:
         name: Switch to light mode
 #Customization
 extra:
+  generator: false
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/tanyusheng
@@ -43,6 +46,8 @@ extra:
       link: https://space.bilibili.com/22048069
     - icon: fontawesome/brands/youtube
       link: https://www.youtube.com/channel/UCX0mNfkFoEHL2HNrfGK2gMA
+    - icon: material/email-edit
+      link: mailto:tanyusheng@outlook.com
     
 
 # Extensions
@@ -54,7 +59,8 @@ markdown_extensions:
   - pymdownx.superfences
 
 plugins:
-  - search
+  - search:
+      separator: '[\s\u200b\-]'
 
 # Page tree
 nav:
@@ -193,6 +199,7 @@ nav:
       - myNotebook/技能储备/数据可视化/matplotlib学习笔记.md
     - Mac技巧:  
       - myNotebook/技能储备/Mac技巧/Mac记住密码与IP快速ssh连接服务器.md
+      - myNotebook/技能储备/Mac技巧/Mac工具集锦.md
     - shell:
       - myNotebook/技能储备/shell/shell2giforpng.md
       - myNotebook/技能储备/shell/shell学习笔记.md
