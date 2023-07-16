@@ -1168,3 +1168,111 @@ document.querySelector('.search-list').addEventListener('click',(e) => {
 **最终效果：**
 
 ![1](localpicbed/ajax学习笔记.assets/1.gif)
+
+## 七、同步与异步
+
+同步：逐行执行，需要原地等待结果后，才继续向下执行；
+
+异步：不必等待任务完成，在将来完成后触发一个回调函数；
+
+### 1.回调函数地狱问题：
+
+概念：在回调函数中嵌套回调函数，一直嵌套下去就形成了回调函数地狱；
+
+缺点：耦合性严重，异常无法捕获，可读性差；
+
+通过一个案例，理解回调函数地狱问题：
+
+```js
+//根据省名称获取城市名称，再根据省名称和城市名称获取地区名称，axios模拟回调函数地狱问题
+axios({url:'http://hmajax.itheima.net/api/province'}).then(result => {
+    const pname = result.data.list[0]
+    document.querySelector('.province').innerHTML = pname;
+    axios({url:'http://hmajax.itheima.net/api/city',params:{pname}}).then(result => {
+        const cname = result.data.list[0];
+        document.querySelector('.city').innerHTML = cname;
+        axios({url:'http://hmajax.itheima.net/api/area',params:{pname,cname}}).then(result =>{
+            const areaname = result.data.list[0];
+            document.querySelector('.area').innerHTML = areaname;
+        })
+    })
+})
+```
+
+这种嵌套问题，出现异常是无法捕获的；
+
+### 2.Promise链式调用问题
+
+依靠then()方法会返回一个新生成的Promise对象的特性，继续串联下一环任务，直到结束；
+
+![image-20230715212806278](localpicbed/ajax学习笔记.assets/image-20230715212806278.png)
+
+```js
+// 将省份变量pname定义为全局变量
+let pname = '';
+axios({url:'http://hmajax.itheima.net/api/province'}).then(result => {
+    pname = result.data.list[0];
+    document.querySelector('.province').innerHTML = pname;
+  	// 关键点是axios结尾返回一个新的Promise对象，这样就可以链式调用了
+    return axios({url:'http://hmajax.itheima.net/api/city',params:{pname}})
+}).then(result => {
+    const cname = result.data.list[0];
+    document.querySelector('.city').innerHTML = cname;
+  	// 由于这里的pname是在兄弟作用域中，所以将pname定义为全局变量；
+    return axios({url:'http://hmajax.itheima.net/api/area',params:{pname,cname}})
+}).then(result => {
+    const area = result.data.list[0];
+    document.querySelector('.area').innerHTML = area;
+})
+```
+
+### 3. 异步编程的终极解决方案-async、await
+
+使用async和await关键字后，可以更简洁的写出基于Promise的异步行为，不需要刻意地链式调用Promise；
+
+```js
+//获取默认省市区
+async function getDefaultArea(){
+    const pObj = await axios({url:'http://hmajax.itheima.net/api/province'});
+    const pname = pObj.data.list[0];
+    const cObj = await axios({url:'http://hmajax.itheima.net/api/city',params:{pname}});
+    const cname = cObj.data.list[0];
+    const aObj = await axios({url:'http://hmajax.itheima.net/api/area',params:{pname,cname}});
+    const aname = aObj.data.list[0];
+    // 赋予到页面上
+    document.querySelector('.province').innerHTML = pname;
+    document.querySelector('.city').innerHTML = cname;
+    document.querySelector('.area').innerHTML = aname;
+}
+getDefaultArea();
+```
+
+> async修饰函数名表明该函数为异步函数，await表明该任务为异步任务，会原地等待后续执行完毕后将结果返回，替代then回调函数的功能；
+
+在使用async函数和await关键字时，如何捕获错误？答案是使用`try...catch`关键字；
+
+```js
+//获取默认省市区
+async function getDefaultArea() {
+    try {
+        const pObj = await axios({ url: 'http://hmajax.itheima.net/api/province' });
+        const pname = pObj.data.list[0];
+        const cObj = await axios({ url: 'http://hmajax.itheima.net/api/city', params: { pname } });
+        const cname = cObj.data.list[0];
+        const aObj = await axios({ url: 'http://hmajax.itheima.net/api/area', params: { pname, cname } });
+        const aname = aObj.data.list[0];
+        // 赋予到页面上
+        document.querySelector('.province').innerHTML = pname;
+        document.querySelector('.city').innerHTML = cname;
+        document.querySelector('.area').innerHTML = aname;
+    } catch (error) {
+        console.dir(error);
+    }
+}
+getDefaultArea();
+```
+
+### 4.事件循环EventLoop
+
+Javascript 单线程为了让耗时代码不阻塞其他代码运行，设计了事件循环模型；
+
