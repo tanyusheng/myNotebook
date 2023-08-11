@@ -1,7 +1,9 @@
 ### 一、如何在app里建立模板文件夹
 如果想把模板文件夹建立在app里的话，需要完成以下操作：
-(1) templates文件夹需要Mark Directory as Templates Floder
-(2) settings.py里的TEMPLATES中的APP_DIRS属性需要设置成`True`
+
+(1) templates文件夹需要Mark Directory as Templates Floder;
+
+(2) settings.py里的TEMPLATES中的APP_DIRS属性需要设置成`True`;
 ![01](localpicbed/06_模板语言DTL.assets/01.png)
 
 > 注意：如果模板放在app中，必须保证当前app已被安装；在settings的INSTALLED_APPS中添加app名称。
@@ -37,9 +39,13 @@ if标签代表着条件选择，模板语言中的if标签可以写成这样:
 ```
 ##### 案例：
 某网站在数据库中存储了账号信息，
+
 Type的值为1：普通会员；
+
 Type的值为2：高级会员；
+
 Type的值为3：管理员；
+
 在登陆的时候，按照Type的值显示出类别信息，如果匿名访问提供登录的链接。
 ##### 实现过程
 我们在views里读取url中的username和type,打包成字典类型通过context属性传递给模板文件。
@@ -69,7 +75,7 @@ def index(request):
 ##### 1.案例
 我们从文件夹中读取学生信息，打包成由字典组成的列表，通过context参数传递给html页面并显示出来。
 我们首先定义一个方法load_from_file用于读取文本文件并打包成列表。
-```
+```python
 def load_from_file(path:str):
     all_students = []
     infos = ['sno', 'name', 'gender', 'birthday', 'mobile', 'email', 'address']
@@ -96,7 +102,7 @@ def load_from_file(path:str):
         raise e
 ```
 然后传递给html页面
-```
+```python
 def index(request):
     path = r"D:\Python\Project\DjangoDemo\app01\static\file\Student.txt"
     students = load_from_file(path)
@@ -104,11 +110,11 @@ def index(request):
     return render(request,'index.html',context={'students': students})
 ```
 在html页面中，我们表格使用bootstrap框架美化，
-```
+```html
 <link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 ```
 使用模板语言for标签获取学生信息:
-```
+```html
 <tbody>
     {% for student in students %}
         <tr>
@@ -129,7 +135,7 @@ def index(request):
 ##### 2.使用DataTable展示数据
 DataTables是基于jQuery的一个插件，用于显示数据表格。
 在基本使用时，需要引用jquery.dataTables.css，脚本文件先引用jquery.js再引用jquery.dataTables.js，注意先后顺序。
-```
+```html
 <!-- 引用css -->
 <link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
 <link type="text/css" rel="stylesheet" href="{% static 'external/datatable/css/jquery.dataTables.css'%}">
@@ -138,7 +144,7 @@ DataTables是基于jQuery的一个插件，用于显示数据表格。
 <script src="{% static 'external/datatable/js/jquery.dataTables.js' %}"></script>
 ```
 在html的table标签使用id属性后，在head标签结束前的script标签内添加脚本
-```
+```html
  $(document).ready(function(){
         $('#表格id').DataTable();
     });

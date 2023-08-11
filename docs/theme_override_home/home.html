@@ -3,286 +3,184 @@
 
 <!-- 看板娘 -->
 {% block libs %}
-  <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+<script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
 {% endblock %}
 
 
 {% block tabs %}
 {{ super() }}
 <style>
-
-    .md-main {
-        flex-grow: 0
-    }
-
-    .md-main__inner {
-        display: flex;
-        height: 100%;
+    
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
     }
 
     .tx-container {
-        padding-top: .0rem;
-        background: linear-gradient(to bottom, var(--md-primary-fg-color), hsla(160deg,47%,55%,1) 99%,#fff 99%)
+        padding-top: 60px; /* 调整顶部留白 */
+        background: linear-gradient(to bottom, var(--md-primary-fg-color), hsla(160deg,47%,55%,1) 99%,#fff 99%);
+        text-align: center;
+        padding-bottom: 20px; /* 调整底部留白 */
     }
 
     .tx-hero {
-        margin: 32px 2.8rem;
-        color: var(--md-primary-bg-color);
-        justify-content: center;
+        margin: 0 auto;
+        padding: 80px 0; /* 调整上下内边距 */
+        color: white;
+        max-width: 800px; /* 限制内容宽度 */
+        text-align: center;
     }
 
     .tx-hero h1 {
-        margin-bottom: 1rem;
-        color: currentColor;
-        font-weight: 700
+        font-size: 36px; /* 调整标题字体大小 */
+        margin-bottom: 20px;
+        font-weight: bold;
+        color: #fff;
     }
 
     .tx-hero__content {
-        padding-bottom: 1rem;
+        max-width: 600px;
         margin: 0 auto;
     }
 
-    .tx-hero__image{
-        width:17rem;
-        height:17rem;
-        order:1;
-        padding-right: 2.5rem;
-    }
-
     .tx-hero .md-button {
-        margin-top: .5rem;
-        margin-right: .5rem;
-        color: var(--md-primary-bg-color)
+        margin-top: 20px; /* 调整按钮上边距 */
+        color: #fff;
+        background-color: #2980b9;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
     }
 
-    .tx-hero .md-button--primary {
-        background-color: var(--md-primary-bg-color);
-        color: hsla(280deg, 37%, 48%, 1);
-        border-color: var(--md-primary-bg-color)
-    }
-
-    .tx-hero .md-button:focus,
     .tx-hero .md-button:hover {
-        background-color: var(--md-accent-fg-color);
-        color: var(--md-default-bg-color);
-        border-color: var(--md-accent-fg-color)
-    }
-
-    .feature-item h2 svg {
-        height: 30px;
-        float: left;
-        margin-right: 10px;
-        transform: translateY(10%);
-    }
-
-    .feature-img {
-        height: 100px;
-        
+        background-color: #1a5276;
     }
 
     .top-hr {
-        margin-top: 42px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+        flex-wrap: wrap;
     }
 
     .feature-item {
+        text-align: center;
         font-family: 'Lato', sans-serif;
         font-weight: 300;
-        box-sizing: border-box;
         padding: 0 15px;
-        word-break: break-word
+        flex: 1;
+        max-width: 300px;
     }
 
     .feature-item h2 {
+        font-size: 24px;
         color: #333;
-        font-weight: 300;
-        font-size: 25px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        line-height: normal;
         margin-top: 20px;
         margin-bottom: 10px;
-        font-family: inherit;
+        font-weight: bold;
     }
 
     .feature-item p {
         font-size: 16px;
-        line-height: 1.8em;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        color: #111;
-        margin: 0 0 10px;
-        display: block;
+        color: #555;
+        margin: 0;
     }
 
-    @media screen and (max-width:30em) {
-        .tx-hero h1 {
-            font-size: 1.4rem
-        }
-    }
-
-    @media screen and (min-width:60em) {
-        .md-sidebar--secondary {
-            display: none
-        }
-
-        .tx-hero {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .tx-hero__content {
-            max-width: 22rem;
-            margin-top: 3.5rem;
-            margin-bottom: 3.5rem;
-            margin-left: 1.0rem;
-            margin-right: 4.0rem;
-            align-items: center;
-        }
-    }
-
-    @media screen and (min-width:76.25em) {
-        .md-sidebar--primary {
-            display: none
-        }
-
-        .top-hr {
-            width: 100%;
-            display: flex;
-            max-width: 61rem;
-            margin-right: auto;
-            margin-left: auto;
-            padding: 0 .2rem;
-        }
-
-        .bottom-hr {
-            margin-top: 10px;
-            width: 100%;
-            display: flex;
-            max-width: 61rem;
-            margin-right: auto;
-            margin-left: auto;
-            padding: 0 .2rem;
-        }
-
-        .feature-item {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .feature-item:hover {
-            background-color: #526cfe47;
-            border-radius: 3px;
-        }
-    }
-
-    .hr {
-        border-bottom: 1px solid #eee;
-        width: 100%;
-        margin: 20px 0;
-    }
-
-    .text-center {
-        text-align: center;
-        padding-right: 15px;
-        padding-left: 15px;
-        margin-right: auto;
-        margin-left: auto;
-        margin-top: 15px;
-        font-family: 'Lato', sans-serif;
-        font-size: 23px;
-        font-weight: 300;
-        padding-bottom: 10px;
+    .feature-img {
+        height: 100px;
     }
 
     .logos {
         display: flex;
-        align-items: center;
         justify-content: center;
-        flex-flow: row wrap;
-        margin: 0 auto;
+        flex-wrap: wrap;
+        margin: 20px auto;
     }
 
     .logos img {
-        flex: 1 1 auto;
         padding: 25px;
         max-height: 130px;
-        vertical-align: middle;
-    }
-
-    .hr-logos {
-        margin-top: 0;
-        margin-bottom: 30px;
     }
 
     .md-footer-meta__inner {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        /* margin-top: 1.0rem; */
     }
-
 </style>
-
-<!-- Main site Entry button descriptions -->
-<section class="tx-container">
-    <div class="md-grid md-typeset">
-      <div class="tx-hero">
-        <div class="tx-hero__image">
-          <!-- <img src="assets/raspi.png" draggable="false"> -->
-        </div>
-        <div class="tx-hero__content">
-          <h1> Xiaoyu's NoteBook </h1>
-          <p>个人新知识学习笔记,同时也是个人知识库</p>
-          <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}" class="md-button md-button--primary">
-            Get started
-          </a>
-          <a href="https://github.com/tanyusheng" title="{{ lang.t('source.link.title') }}" class="md-button">
-            Go to GitHub
-          </a>
-        </div>
-      </div>
-    </div>
-</section>
-
-<!-- Main site box descriptions -->
-<div class="top-hr">
-    <div class="feature-item">
-        <h2>  
-            微信公众号
-        </h2>
-        <p>小雨编程</p>
-    </div>
-    <div class="feature-item">
-        <img src="assets/wechat.png" alt="小雨编程"class="feature-img">
-    </div>
-</div>
-
-<div class="top-hr">
-    <div class="hr">
-    </div>
-</div>
-
-{% endblock %}
-
-<!-- Announcement bar -->
-{% block announce %}
-  <style>.md-announce a,.md-announce a:focus,.md-announce a:hover{color:currentColor}.md-announce strong{white-space:nowrap}.md-announce .twitter{margin-left:.2em;color:#00acee}</style>
-    <strong><a href="https://chat-shared.zhile.io/shared.html">📢:免费的共享ChatGPT账号</a></strong>
-{% endblock %}
-
-{% block content %}{% endblock %}
-
-{% block footer %}
-<footer class="md-footer">
-    <div class="md-footer-meta md-typeset">
-        <div class="md-footer-meta__inner md-grid">
-            <!-- 备案信息 -->
-            <div class="md-footer-copyright">
-                <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备17025207号-1</a>
+</head>
+<body>
+    <!-- Main site Entry button descriptions -->
+    <section class="tx-container">
+        <div class="md-grid md-typeset">
+            <div class="tx-hero">
+                <div class="tx-hero__content">
+                    <h1> Xiaoyu's NoteBook </h1>
+                    <p>个人新知识学习笔记，同时也是个人知识库</p>
+                    <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}" class="md-button md-button--primary">
+                        Get started
+                    </a>
+                    <a href="https://github.com/tanyusheng" title="{{ lang.t('source.link.title') }}" class="md-button">
+                        Go to GitHub
+                    </a>
+                </div>
             </div>
         </div>
+    </section>
+
+    <!-- Main site box descriptions -->
+    <div class="top-hr">
+        <div class="feature-item">
+            <h2>微信公众号</h2>
+            <p>小雨编程</p>
+        </div>
+        <div class="feature-item">
+            <img src="assets/wechat.png" alt="小雨编程" class="feature-img">
+        </div>
+        <div class="hr">
+        </div>
     </div>
-</footer>
-{% endblock %}
+
+    {% endblock %}
+
+    <!-- Announcement bar -->
+    {% block announce %}
+    <style>
+        .md-announce a,
+        .md-announce a:focus,
+        .md-announce a:hover {
+            color: currentColor
+        }
+
+        .md-announce strong {
+            white-space: nowrap
+        }
+
+        .md-announce .twitter {
+            margin-left: .2em;
+            color: #00acee
+        }
+    </style>
+    <strong><a href="https://chat-shared.zhile.io/shared.html">📢:本站现在已经支持全局中文搜索🔍,欢迎体验🥳</a></strong>
+    {% endblock %}
+
+    {% block content %}{% endblock %}
+
+    {% block footer %}
+    <footer class="md-footer">
+        <div class="md-footer-meta md-typeset">
+            <div class="md-footer-meta__inner md-grid">
+                <!-- 备案信息 -->
+                <div class="md-footer-copyright">
+                    <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备17025207号-1</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    {% endblock %}

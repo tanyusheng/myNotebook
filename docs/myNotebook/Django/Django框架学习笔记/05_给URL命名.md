@@ -42,8 +42,10 @@ def index(request):
 ```
 ##### 5. 调用url的name时传递参数
 我们先复习一下url传值的两种常见方法：
+
 （1）直接使用url传值
 以传递电影编号movie_id为例，如果想通过url传值。在定义path的时候，使用`path("movile_detail/<movie_id>",...)`，然后在views里定义方法来接收movie_id这个值，就定义成`def movie_id(request,movie_id)`，浏览器中访问的时候可以通过`127.0.0.1:8000/movie_detail/8001`就能把movie_id作为参数通过url传过去。
+
 （2）使用查询字符串传值
 我们还是以传递电影编号为例，如果想通过url传值。在定义path时，使用`path("movie_detail/",...)`，在views里定义方法来接收就写成
 ```
@@ -51,6 +53,7 @@ def movie_id(request):
         movie_id = request.GET.get(movie_id)
 ```
 在浏览器中访问是，url需要输入`127.0.0.1:8000/?movie_id=8001`。这样也能完成url的传值。
+
 （3）传递参数
 在views中，我们使用redirect重定向到一个新的url如果要传递参数该怎么办呢？
 有两种方式：

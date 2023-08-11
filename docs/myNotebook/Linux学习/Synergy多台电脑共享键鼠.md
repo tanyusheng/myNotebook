@@ -36,8 +36,6 @@ sudo apt install xxx
 
 3.2client的软件中勾选Client。在服务端IP中输入server软件中显示的IP地址。client软件点开始，显示synergy正在运行并输出日志。
 
-> 注：
-
-如果出现问题：client显示 failed to connect to server:Timed out。server显示client connection may not be secure.failed to accept secure socket.
+> 如果出现问题：client显示 failed to connect to server:Timed out。server显示client connection may not be secure.failed to accept secure socket.
 
 解决方案：软件窗口菜单栏——编辑——设置。**查看Network Security中的Use SSL encryption是否勾选，server和client需要保持一致，客户端与服务端加密由于不加密要保持一致**。

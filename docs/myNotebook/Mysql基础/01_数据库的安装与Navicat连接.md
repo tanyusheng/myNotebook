@@ -2,6 +2,7 @@
 在前面的学习中，我们对数据的存储都是通过文本文件读写实现的，现在为了提高效率我们介绍一下数据库的使用，在Django中通过SQL语句操作数据库，原先这些语句是直接控制数据库的，现在我们写在Django里通过接口来控制数据库。
 今天我们就正式开始介绍一下最常用的关系数据库--MySQL
 对数据库基本操作：增删改查 --- sql语句
+
 * 增 -- insert into Student(Sno,name) values('95001','小雨')
 * 删 -- delete from student where name='小雨'
 * 改 -- update student set name='小明' where sno=95001
@@ -12,17 +13,22 @@
 大容量、高并发、易维护
 ##### 1. 关系型数据库
 （1）特点：
+
 * 基于二维表格
 * 可以通过标准的SQL语句对数据库进行增删查改。
+
 （2）常见的关系型数据库
 MySQL装机量最大，开源，简单易用
 Oracle做的最专业的关系型数据库
 SQLserver 微软出品，微软产品体系路线
 ##### 2.非关系型数据库
 （1）概念
+
 No-SQL [not only sql]
 指的是非关系型数据库，nosql的产生不是要彻底第否定非关系型数据库，而是作为一个传统关系型数据库的有效补充，在特定场景下可以发挥出难以想象的高效率和高性能。
+
 （2）种类
+
 |     数据库类型      |     典型产品      |
 | :-----------------: | :---------------: |
 | key-value存储数据库 | Redis、memcacheDB |
@@ -33,6 +39,7 @@ No-SQL [not only sql]
 ### 二、安装MySQL数据库
 在单独的服务器上安装MySQL
 mysql基本环境：
+
 centos 7.4(1708)
 MySQL Community Server 5.7
 ##### 1.安装步骤
@@ -119,7 +126,7 @@ mysql -u'用户名' -p
 ```
 接下来会打开一个标准的命令行输入密码的界面，此时再输入密码，才可以登录mysql.
 ##### 2. 基础操作
-```
+```sql
 show databases;  /*查看mysql有哪些数据库*/
 show tables;  /*查看指定数据库中有哪些表*/
 create database TestDB;   /* 创建数据库TestDB */
@@ -131,7 +138,8 @@ update student set name='toms' where sno=95002;   /* 修改表中的元素 */
 delete from student where sno=95002;   /* 删除表中的数据 */
 ```
 ##### 3. 解决中文存储异常问题
-注意： 默认情况下，数据库不能直接存储中文，本质原因没有让数据库使用utf-8编码，我们把中文字符集加上就行了。
+> 注意： 默认情况下，数据库不能直接存储中文，本质原因没有让数据库使用utf-8编码，我们把中文字符集加上就行了。
+
 ```
 create database TestDB01 default character set utf8 collate utf8_general_ci;
 ```

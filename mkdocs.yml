@@ -66,6 +66,18 @@ plugins:
 nav:
   - Home: index.md
   
+  - 玩转树莓派:
+    - 趣味项目:
+      - myNotebook/树莓派/树莓派如何刷RetroPie，制作一个复古游戏机.md
+      - myNotebook/树莓派/树莓派搭建网络视频实时监控系统.md
+      - myNotebook/树莓派/树莓派安装Samba服务，实现家庭文件共享.md
+      - myNotebook/树莓派/树莓派调用百度人脸识别API实现人脸识别.md
+      - myNotebook/树莓派/树莓派人脸识别实际应用:人脸识别门禁.md
+      - myNotebook/树莓派/物联网家庭环境监控系统项目介绍.md
+    - 基础知识:
+      - myNotebook/树莓派/用Terminal给SD卡写入img镜像的方法.md
+      - myNotebook/树莓派/给树莓派设置静态IP.md
+      - myNotebook/树莓派/树莓派如何开启SSH服务.md
   - Django: 
     - Django框架学习笔记: 
       - myNotebook/Django/Django框架学习笔记/01_认识Django.md
@@ -157,20 +169,11 @@ nav:
       - myNotebook/Python学习笔记/Tkiner项目实战/07_学生信息的修改删除和保存.md
       - myNotebook/Python学习笔记/Tkiner项目实战/08_实现修改密码的功能.md
       - myNotebook/Python学习笔记/Tkiner项目实战/09_项目总结.md
-  - 树莓派:
-      - myNotebook/树莓派/树莓派人脸识别实际应用:人脸识别门禁.md
-      - myNotebook/树莓派/树莓派如何刷RetroPie，制作一个复古游戏机.md
-      - myNotebook/树莓派/树莓派如何开启SSH服务.md
-      - myNotebook/树莓派/树莓派安装Samba服务，实现家庭文件共享.md
-      - myNotebook/树莓派/树莓派搭建网络视频实时监控系统.md
-      - myNotebook/树莓派/树莓派调用百度人脸识别API实现人脸识别.md
-      - myNotebook/树莓派/物联网家庭环境监控系统项目介绍.md
-      - myNotebook/树莓派/用Terminal给SD卡写入img镜像的方法.md
-      - myNotebook/树莓派/给树莓派设置静态IP.md
+  
   - 物联网:
       - myNotebook/物联网/Arduino通过ESP8266连接机智云物联网平台.md
       
-  - 计算机课程笔记: 
+  - 计算机基础: 
     - 操作系统:
       - myNotebook/计算机课程笔记/操作系统/01操作系统的概念和定义.md
       - myNotebook/计算机课程笔记/操作系统/02操作系统进程与线程.md
@@ -207,9 +210,10 @@ nav:
       - myNotebook/技能储备/shell/shell2giforpng.md
       - myNotebook/技能储备/shell/shell学习笔记.md
   - 随笔: 
+    - myNotebook/随笔/心流.md
     - myNotebook/随笔/typora使用技巧.md
     - myNotebook/随笔/开源协议比较.md
-    - myNotebook/随笔/心流.md
+    
 
               
               

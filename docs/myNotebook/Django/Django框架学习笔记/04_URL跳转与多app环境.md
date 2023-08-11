@@ -3,8 +3,9 @@
 ### 一、URL跳转
 URL的跳转是什么呢？URL的跳转可以称为URL重定向，表示从一个HTML页面跳到另外一个页面。
 URL跳转有两种途径：
-##### 1. html的<a>标签跳转
-把文本或者图放到a标签里，点击a标签跳转。在Django中需要注意的是：html里给`href`的值为指定路径名而不是整个包含后缀的html文件。
+##### 1. html的a标签跳转
+把文本或者图放到a标签里，点击a标签跳转。
+在Django中需要注意的是：html里给`href`的值为指定路径名而不是整个包含后缀的html文件。
 ```
 <li><a href="game/">游戏</a></li>
 <li><a href="movie/">电影</a></li>
@@ -99,6 +100,7 @@ def index(request):
     return render(request, 'home/index.html')
 ```
 多app路径分析过程为：
+
 * 第一步：当用户输入一个url路径，系统首先到项目urls里找，项目urls里的path方法通过`include("app名.urls")`,进入对应app文件夹下的urls；
 * 第二步：接着app下的urls会访问同级文件夹中的views,views里定义了index方法，也就是说会访问到views里的index方法；
 * 第三步：views里的index方法包含了模板文件的位置，通常为`app同名子文件夹/模板文件.html`

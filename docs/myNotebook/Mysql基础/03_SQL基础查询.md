@@ -19,27 +19,37 @@ select SNO,SName from Student where Gender='男',
 在Navicat中新建一个数据库，编码选择utf-8，在表中通过导入向导的方式，创建每一个表。
 我们的原始数据是用逗号分割的txt文件，现在我们就把它导入到mysql的数据库LibryDB的author表中。
 ![02](localpicbed/03_SQL基础查询.assets/02.png)
-
-![03](localpicbed/03_SQL基础查询.assets/03.png)![04](localpicbed/03_SQL基础查询.assets/04.png)
+![03](localpicbed/03_SQL基础查询.assets/03.png)
+![04](localpicbed/03_SQL基础查询.assets/04.png)
 ![05](localpicbed/03_SQL基础查询.assets/05.png)
 ![06](localpicbed/03_SQL基础查询.assets/06.png)
 这样，我们就把txt文件中的原始数据导入到mysql表中了；
-![07](localpicbed/03_SQL基础查询.assets/07.png)这样，我们就把Author表导入完成了，接下来，再依次导入Book、BookType、BorrowBook、Press、Student表即可。
-要点：
+![07](localpicbed/03_SQL基础查询.assets/07.png)
+这样，我们就把Author表导入完成了，接下来，再依次导入Book、BookType、BorrowBook、Press、Student表即可。
+
+> 要点：
+
 （1）一个表对应一个原始文件；
+
 （2）数据库的编码与txt的编码要保持一致；
+
 （3）第一行是字段名；
-（4)每行一条数据，主语记录分隔符、栏位分隔符、文本限定符的设置。
+
+（4）每行一条数据，主语记录分隔符、栏位分隔符、文本限定符的设置。
+
 ### 二、SQL查询语句基础知识
 ##### 1.常用运算符
+
 | sql运算符  |                常用符号                |
 | :--------: | :------------------------------------: |
 | 比较运算符 | = 、!=、 >、 <、 >=、 <=、 <>、!>、 !< |
 | 逻辑运算符 |             and 、or、 not             |
 | 特殊运算符 |        between and 、in、 like         |
+
 ##### 2. 通配符：
 表示任意一个字符`_`;
 表示任意多个字符`%`;
+
 ### 三、 数据库查询操作案例
 ##### 1. 原始数据：
 ![08](localpicbed/03_SQL基础查询.assets/08.png)
@@ -108,6 +118,7 @@ from Student
 where SName like '陈%';
 ```
 使用`like`进行模糊查询，通配符`%`表示任意多个字符。
+
 （7）查询出手机号码134或者135开头，倒数第四位不是8或9的学生姓名；
 ```sql
 select SName
@@ -115,12 +126,14 @@ from Student
 where MobileNO regexp '^[1][3][45][0-9]{4}[^89][0-9]{3}$';
 ```
 这里的手机号码格式可以之间通过`regexp`引出正则表达式来进行限制。
+
 （8）查询出借出过书的同学的学号；
 ```sql
 select distinct SNO as '借书过的学号'
 from BorrowBook;
 ```
 这里我们使用关键字`distinct`表示筛选出的结果是去重的，不重复的。
+
 （9）对Student表按照年龄升序排序，如果年龄一样，女生排在男生前面。
 ```sql
 select *
@@ -128,6 +141,7 @@ from Student
 order by Sage DESC,Sex ASC;
 ```
 排序使用关键字`order by`,`ASC`表示升序，`DESC`表示降序；
+
 （10）查询出Student表中的前5行记录。
 ```sql
 select *

@@ -22,6 +22,7 @@ scheme://host:port/path/?query-string=xxx
 ### 二、URL路由的基本使用
 ##### 1. Web请求的过程
 （1）客户端对服务器有一个HttpRequest请求；
+
 （2）服务器把数据使用http封装并返回HttpResponse。
 
 ##### 2. URL路由的工作流程：
@@ -71,9 +72,13 @@ http服务默认使用80端口，Django为了防止与当前主机上可能存�
 
 ##### 4. 访问局域网或者虚拟机里的Django服务器
 如果局域网或者虚拟机中某台主机运行了Django服务，我们想通过ip地址访问它。需要做哪些配置呢？
+
 （1）在settings.py里，`ALLOWED_HOSTS = ['*']`,放行所有主机名。
+
 （2）在命令行启动Django服务的时候使用`sudo python manage.py runserver 0.0.0.0:80`
+
 （3）访问虚拟机的服务注意使用NAT模式便于宿主机访问虚拟机ip
+
 ![05g](localpicbed/02_URL路由.assets/05g.gif)
 
 ### 四、使用URL传值

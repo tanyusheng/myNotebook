@@ -7,6 +7,7 @@ Django是一个开放源代码的Web应用框架，由Python写成。采用了MT
 ### 一、关于Django
 ##### 1. web应用程序
 现在在互联网上，我们随便打开一个网站，基本上它都是一个web应用程序。如果我们要知道想要开发一个Web应用程序需要做哪些事情呢？
+
 * 接收request请求
 * url处理
 * 业务逻辑处理
@@ -14,6 +15,7 @@ Django是一个开放源代码的Web应用框架，由Python写成。采用了MT
 * 前端HTML页面加载
 * 填充页面的数据
 * 页面的response
+
 这么多复杂的功能，如果从零开始做的话，工作量太可怕了。不过不用担心，我们可以用web框架，现行的web框架有很多，它们把我们需要的基础设施都建设好了，我们只需要在此基础上进行添砖加瓦就可以了。
 ###### 2. 什么是web框架
 对于Web开发这种复杂的工作，把这些工作模块化，实现相应工作运行独立性和层次性。这个就是web框架在做的事情。
@@ -22,9 +24,10 @@ Django是一个开放源代码的Web应用框架，由Python写成。采用了MT
 ##### 1. MVC
 目前大部分的Web框架都遵循MVC标准，全名是Model View Controller,是Web开发的通用标准，它实现了业务逻辑、数据、界面的分离。
 MVC:(Model-View-Controller)传统的Web开发的标准设计模型；
-**model**：主要封装对数据库层的访问，对数据库中的数据进行增删改查操作。
-**view**: 用于封装结果，生产页面展示的html内容
-**controller**: 用于接收请求，处理业务逻辑，与Model和View交互，返回结果。
+
+* **model**：主要封装对数据库层的访问，对数据库中的数据进行增删改查操作。
+* **view**: 用于封装结果，生产页面展示的html内容
+* **controller**: 用于接收请求，处理业务逻辑，与Model和View交互，返回结果。
 
 ![02](localpicbed/01_认识Django.assets/02.png)
 
@@ -32,10 +35,12 @@ MVC:(Model-View-Controller)传统的Web开发的标准设计模型；
 django采用的就是MVT模式；
 MVT:(Model-View-Template)基于传统MVC的djangoMVT框架。
 ![03](localpicbed/01_认识Django.assets/03.png)
-**Model**：与MVC中M的功能相同，负责和数据库交互，进行数据处理。
-**View**：与MVC 中的C功能相同，接收请求，进行业务处理，返回应答
-**Template**：与MVC中V的功能相同，负责封装构造要返回的html
- response返回三种场景：纯文本、静态页面、动态页面。
+
+* **Model**：与MVC中M的功能相同，负责和数据库交互，进行数据处理。
+* **View**：与MVC 中的C功能相同，接收请求，进行业务处理，返回应答
+* **Template**：与MVC中V的功能相同，负责封装构造要返回的html
+
+response返回三种场景：纯文本、静态页面、动态页面。
 
 ### 三、Django环境部署
 这里我们讲解如何在python环境中安装django模块。
@@ -50,11 +55,13 @@ pip show django
 
 ##### 2. pip工具
 为了更好的管理python中的包，我们不得不介绍一下强大的python包管理工具pip。它提供对python查找、下载、安装、卸载的功能。
+
 * 查找 `pip search Django`
 * 安装 `pip install Django`
 * 查看 `pip show Django`
 * 卸载 `pip uninstall Django`
 * 查看列表 `pip list`
+
 > 我的mac的python版本是3.8，使用pip安装不了django3.2,只能安装3.1版本的Django
 
 安装指定版本的Django，可以使用命令：
@@ -82,6 +89,7 @@ NameError: name 'os' is not defined
 ### 四、Django虚拟环境部署
 ##### 1. Django版本与Python版本的对应关系
 首先我们要注意django版本与python版本的对应关系，因为有时候你的django跑不起来，可能是因为与你的python版本不适配。
+
 | Django版本 |       Python版本        |
 | :--------: | :---------------------: |
 |    1.8     | 2.7, 3.2, 3.3, 3.4, 3.5 |

@@ -6,26 +6,26 @@ Samba是一种局域网文件共享系统，安装上Samba后，在局域网内�
 
 ### 一、配置方法
 第一步：更新apt-get
-```
+```shell
 sudo apt-get update
 ```
 如果源设置的没有问题，继续升级apt-get
-```
+```shell
 sudo apt-get upgrade
 ```
 第二步：安装Samba
-```
+```shell
 sudo apt-get install samba-common-bin
 ```
-```
+```shell
 sudo apt-get install samba 
 ```
 第三步：修改Samba配置文件
-```
+```shell
 sudo nano /etc/samba/smb.conf
 ```
 第四步：添加pi用户
-```
+```conf
 [pi]
 path = /home/pi/
 valid users = pi
@@ -36,7 +36,7 @@ create mask = 0777
 directory mask = 0777
 ```
 第五步：修改smb密码
-```
+```shell
 sudo smbpasswd -a pi
 ```
 设置成你想设置的密码后就可以以这个密码来登录啦
@@ -87,3 +87,4 @@ sudo smbpasswd -a pi
 ### 总结
 树莓派开启了Samba服务后，家里就相当于家庭文件共享中心。传输文件再也不用通过qq传送或者U盘拷贝来拷贝去了。
 树莓派上存一个文件，家里的任何设备都可以访问。下载一部电影放进树莓派里，无论是手机、平板电脑、客厅的电视可以秒加载，局域网文件共享，效率高，速度快！
+> samba对于文件共享这个功能来说还可以，如果是流媒体播放的话，推荐树莓派安装miniDLNA,体验了你就知道了，播放流媒体的速度非常快！

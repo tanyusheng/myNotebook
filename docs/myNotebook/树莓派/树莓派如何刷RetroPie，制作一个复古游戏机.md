@@ -1,5 +1,6 @@
 树莓派是一台基于ARM的微型电脑，外表虽小，能力却毫不逊色。
-给它装上开源的RetroPi模拟器后，它就是一台万能复古游戏机，可以运行索尼、任天堂、世嘉旗下的PS1、PS2、NES、GBA......50种以上的游戏主机，
+给它装上开源的RetroPi模拟器后，它就是一台万能复古游戏机，可以运行索尼、任天堂、世嘉旗下的PS1、PS2、NES、GBA......50种以上的游戏主机;
+
 ![01](localpicbed/树莓派如何刷RetroPie，制作一个复古游戏机.assets/01.png)
 ![02](localpicbed/树莓派如何刷RetroPie，制作一个复古游戏机.assets/02.png)
 
@@ -34,6 +35,7 @@ RetroPie镜像我们可以从在官网下载：https://retropie.org.uk/download/
 
 ##### 小建议：手柄按键配置方案
  （1）PS手柄，对应键位如下：
+
 * A<==>O键
 * B<==>X键
 * X<==>三角形键
@@ -62,6 +64,7 @@ RetroPie镜像我们可以从在官网下载：https://retropie.org.uk/download/
 游戏资源可以去贴吧、论坛、搜索引擎”游戏名关键字+rom"，都可以，这里只分享几款游戏rom,链接:https://pan.baidu.com/s/1L1U-18myM3TreiB3pAE7JA  密码:96pk,更多游戏roms,工众号“小雨编程”,恢复关键字“roms”即可获得更多游戏roms
 ##### 3.2 游戏安装
 由于RetroPie系统安装完毕后，自动开启了smb文件传输服务，在同一个局域网下，可以直接通过smb服务,把游戏rom传到RetroPie中；具体操作如下：
+
 第一步：在Mac系统下，在Finder界面下按command+K键，
 ![12](localpicbed/树莓派如何刷RetroPie，制作一个复古游戏机.assets/12.png)
 第二步：输入刚才记下的IP地址，点击连接，用户和密码界面选择客人用户连接；

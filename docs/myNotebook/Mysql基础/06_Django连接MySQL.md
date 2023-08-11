@@ -1,5 +1,7 @@
 ### 一、Django中的MySQL驱动程序
+
 Python中常见的MySQL驱动程序：
+
 * MySQL-python：就是MySQLdb，是对C语言操作MySQL的封装，支持Python2，不支持Python3
 * mysqlclient:MySQL-python的另一个分支，支持Python3
 * pymysql： 纯Python实现的驱动
