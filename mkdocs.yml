@@ -101,18 +101,19 @@ nav:
       - myNotebook/Mysql基础/06_Django连接MySQL.md
   - 前端: 
     - HTML:
-      - HTML学习笔记(上): myNotebook/frontEnd/HTML学习笔记(上).md
-      - HTML学习笔记(下): myNotebook/frontEnd/HTML学习笔记(下).md
+      - myNotebook/frontEnd/前端基础/HTML学习笔记(上).md
+      - myNotebook/frontEnd/前端基础/HTML学习笔记(下).md
     - JavaScript: 
-      - JavaScript基础: myNotebook/frontEnd/JavaScript基础.md
-      - JavaScript进阶: myNotebook/frontEnd/JavaScript进阶.md
+      - myNotebook/frontEnd/前端基础/JavaScript基础.md
+      - myNotebook/frontEnd/前端基础/JavaScript进阶.md
     - CSS: 
-      - CSS盒子模型: myNotebook/frontEnd/css布局:盒子模型与定位.md
-      - CSS选择器: myNotebook/frontEnd/css布局:语法规范与选择器.md
+      - myNotebook/frontEnd/前端基础/css布局:盒子模型与定位.md
+      - myNotebook/frontEnd/前端基础/css布局:语法规范与选择器.md
     - 框架知识:
-      - myNotebook/frontEnd/ajax学习笔记.md
-  
-  
+      - myNotebook/frontEnd/前端基础/Nodejs.md
+      - myNotebook/frontEnd/前端基础/Webpack学习笔记.md
+      - myNotebook/frontEnd/前端基础/ajax学习笔记.md
+      - myNotebook/frontEnd/vue框架/vue学习.md
   - Python:
     - Python基础:
       - myNotebook/Python学习笔记/Python基础/01_变量与数据类型.md
@@ -177,12 +178,14 @@ nav:
   - 技能储备:
     - 算法与数据结构:
       - myNotebook/技能储备/算法与数据结构/ACM模式的输入输出处理(Java篇).md
+    - Java学习笔记:
+      - myNotebook/技能储备/Java学习笔记/java知识提升.md
     - Android: 
       - myNotebook/技能储备/Android/Android gradle学习笔记.md
       - myNotebook/技能储备/Android/Android刷机.md
       - myNotebook/技能储备/Android/机智云Android项目导入AS.md 
     - git:
-      - myNotebook/技能储备/Git/学习并熟练掌握git.md
+      - myNotebook/技能储备/Git/Git学习笔记.md
     - 效率工具:
       - myNotebook/技能储备/效率工具/终端配置.md
     - 网络技术:
@@ -204,8 +207,9 @@ nav:
       - myNotebook/技能储备/shell/shell2giforpng.md
       - myNotebook/技能储备/shell/shell学习笔记.md
   - 随笔: 
-    - typora: myNotebook/随笔/typora使用技巧.md
-    - 开源协议: myNotebook/随笔/开源协议比较.md
+    - myNotebook/随笔/typora使用技巧.md
+    - myNotebook/随笔/开源协议比较.md
+    - myNotebook/随笔/心流.md
 
               
               
