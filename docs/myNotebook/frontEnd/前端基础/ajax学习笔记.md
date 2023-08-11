@@ -1276,3 +1276,176 @@ getDefaultArea();
 
 Javascript 单线程为了让耗时代码不阻塞其他代码运行，设计了事件循环模型；
 
+执行代码和收集异步任务，在调用栈空闲时，反复调用任务队列里回调函数执行机制；
+
+**为什么要有事件循环？**
+
+因为JavaScript是单线程的，为了不阻塞JavaScript引擎，而设计执行的代码模型
+
+**事件循环的过程:**
+
+a.执行同步代码，遇到异步代码交给宿主浏览器环境执行；
+
+b.异步有了结果后，把回调函数放入任务队列排队；
+
+c.当调用栈空闲后，返回调用任务队列里的回调函数；
+
+### 5.宏任务与微任务
+
+ES6之后引入了promise对象，让JS引擎也能发起异步任务： 
+
+宏任务：由浏览器环境执行的异步代码,例如JS脚本事件、定时器、AJAX、用户交互事件
+
+微任务：由JS引擎环境执行的异步代码，例如Promise对象.then()回调；
+
+> Promise.then()属于微任务队列，优先级高于宏任务队列；
+
+#### 事件循环经典面试题：
+
+```js
+// 回答代码执行顺序
+console.log(1);
+setTimeout(() => {
+    console.log(2);
+    const p = new Promise(resolve => resolve(3));
+    p.then(result => console.log(result))
+},0);
+const p = new Promise(resolve => {
+    setTimeout(() => {
+        console.log(4);
+    },0);
+    resolve(5);
+});
+p.then(result => console.log(result));
+const p2 = new Promise(resolve => resolve(6));
+p2.then(result => console.log(result));
+console.log(7);
+```
+
+答案：1 7 5 6 2 3 4 
+
+### 6.Promise.all静态方法
+
+语法：
+
+```js
+const p = Promise.all([Promise对象,Promise对象,...])
+p.then(result => {
+// result结果：[Promise对象成功结果，Promise对象成功结果,...]
+}).catch(error => {
+// 第一个失败的Promise对象，抛出的异常
+})
+```
+
+#### 案例1：同时获取北上广深四个城市的天气信息
+
+```js
+const bjPromise = axios({url:'http://hmajax.itheima.net/api/weather',params:{city:'110100'}})
+const shPromise = axios({url:'http://hmajax.itheima.net/api/weather',params:{city:'310100'}})
+const gzPromise = axios({url:'http://hmajax.itheima.net/api/weather',params:{city:'440100'}})
+const szPromise = axios({url:'http://hmajax.itheima.net/api/weather',params:{city:'440300'}})
+const p = Promise.all([bjPromise,shPromise,gzPromise,szPromise]);
+p.then(result => {
+    console.log(result);
+    const weathers = result.map(item => {
+        return `<li>${item.data.data.area}---${item.data.data.weather}</li>`;
+    }).join('');
+    document.querySelector('.my-ul').innerHTML = weathers
+    
+}).catch(error => {
+    console.dir(error);
+})
+```
+
+#### 案例2：展示商品到分类页面上
+
+思路：遍历所有的一级分类数据；遍历id，创建获取二级分类请求；合并所有二级分类Promise对象；等待同时成功，开始渲染页面。
+
+```js
+axios({ url: 'http://hmajax.itheima.net/api/category/top' }).then(result => {
+            console.log(result.data.data);
+            // 获取二级列表的Promise对象
+            const subPromise = result.data.data.map(itemTop => {
+                return axios({ url: 'http://hmajax.itheima.net/api/category/sub', params: { id: itemTop.id } });
+            })
+            // 合并二级Promise对象
+            const promiseAll = Promise.all(subPromise).then(result => {
+                console.log(result);
+                const showStr = result.map(item => {
+                    const subObj = item.data.data;
+                    return `<div class="item">
+                            <h3>${subObj.name}
+                            <ul>
+                                ${subObj.children.map(item => {
+                                return `<li>
+                                            <a href="javascript:;">
+                                            <img src=${item.picture}/>
+                                            </a>
+                                            <p>${item.name}</p>
+                                        </li>`
+                                }).join('')
+                            }
+                            </ul>
+                            </h3>
+                            </div>`
+                            }).join('');
+                document.querySelector('.sub-list').innerHTML = showStr;
+            })
+        })
+```
+
+#### 案例3：学习反馈-省市区切换
+
+![image-20230718232146723](localpicbed/ajax学习笔记.assets/image-20230718232146723.png)
+
+```js
+// 1.1 设置省份下拉菜单数据
+// 创建一个全局变量
+let pname = '';
+axios({ url: 'http://hmajax.itheima.net/api/province' }).then(provinceList => {
+    const proinceListStr = provinceList.data.list.map(pname => {
+        return `<option value=${pname}>${pname}</option>`
+    }).join('');
+    document.querySelector('.province').innerHTML = `<option value="">省份</option>` + proinceListStr;
+})
+
+// 1.2 切换省份
+document.querySelector('.province').addEventListener('change', async e => {
+    // 用户选中的省份
+    pname = e.target.value;
+    const cityList = await axios({ url: 'http://hmajax.itheima.net/api/city', params: { pname: e.target.value } });
+    console.log(cityList.data.list);
+    const cityListStr = cityList.data.list.map(cname => {
+        return `<option value=${cname}>${cname}</option>`
+    }).join('');
+    document.querySelector('.city').innerHTML = `<option value="">城市</option>` + cityListStr;
+    document.querySelector('.area').innerHTML = `<option value="">地区</option>`
+})
+
+// 1.3 切换城市
+document.querySelector('.city').addEventListener('change', async e => {
+    // 用户选择的城市
+    const areaList = await axios({ url: 'http://hmajax.itheima.net/api/area', params: { pname: pname, cname: e.target.value }});
+    console.log(areaList.data.list);
+    const areaListStr = areaList.data.list.map(aname => {
+        return `<option value=${aname}>${aname}</option>`
+    }).join('');
+    document.querySelector('.area').innerHTML = `<option value="">地区</option>` + areaListStr;
+})
+
+// 2.收集数据并提交保存到后端
+document.querySelector('.submit').addEventListener('click', async () => {
+    // 获取表单中的内容
+    try{
+        const form = document.querySelector('.info-form')
+        const formRes = serialize(form, { hash: true, empty: true });
+        const res = await axios({ url: 'http://hmajax.itheima.net/api/feedback', method: 'post', data: { ...formRes } });
+        console.log(res);
+        alert(res.data.message)
+    }catch (error){
+        console.dir(error);
+        alert(error.response.data.message);
+    }
+})
+```
+

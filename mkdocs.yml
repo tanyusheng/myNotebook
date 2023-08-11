@@ -12,7 +12,7 @@ theme:
   custom_dir: docs/theme_override_home/
   favicon: assets/water.png
   icon:  
-    logo: fontawesome/solid/cloud-rain
+    logo: fontawesome/solid/laptop-code
   features:
     - search.suggest
     - search.highlight

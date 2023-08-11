@@ -3,8 +3,8 @@
 ### 提示信息文件位置
 Linux系统中，定义登录提示信息内容的文本文件是`/etc/issue`或者`/etc/motd`，我们使用vim或者nano等文本编辑器修改它之后，下次登录时的提示信息就会随之改变。
 ### 根据文字生产文本图形
-推荐这个网站，可以根据文字内容生成对应的文本图形[[Text ASCII Art Generator](http://patorjk.com/software/taag/#p=display&f=Graffiti&t=tianmingxing)
-](http://patorjk.com/software/taag/#p=display&c=bash&f=Big&t=YUSHENG)
+推荐这个网站，可以根据文字内容生成对应的文本图形，[patorjk](http://patorjk.com/software/taag/#p=display&c=bash&f=Big&t=YUSHENG)
+
 ```shell 
 #  ██╗   ██╗██╗   ██╗███████╗██╗  ██╗███████╗███╗   ██╗ ██████╗ 
 #  ╚██╗ ██╔╝██║   ██║██╔════╝██║  ██║██╔════╝████╗  ██║██╔════╝ 
@@ -12,7 +12,6 @@ Linux系统中，定义登录提示信息内容的文本文件是`/etc/issue`或
 #    ╚██╔╝  ██║   ██║╚════██║██╔══██║██╔══╝  ██║╚██╗██║██║   ██║
 #     ██║   ╚██████╔╝███████║██║  ██║███████╗██║ ╚████║╚██████╔╝
 #     ╚═╝    ╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝ 
-#                                                                                                                                                
 ```
  编辑`/etc/motd`文件，后保存！ 开机效果：
 ![01](localpicbed/让你的Linux终端开机欢迎语更好看.assets/01.png)
