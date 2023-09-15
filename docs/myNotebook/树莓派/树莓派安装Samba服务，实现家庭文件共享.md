@@ -15,10 +15,10 @@ sudo apt-get upgrade
 ```
 第二步：安装Samba
 ```shell
-sudo apt-get install samba-common-bin
+sudo apt-get install samba-common-bin -y
 ```
 ```shell
-sudo apt-get install samba 
+sudo apt-get install samba -y
 ```
 第三步：修改Samba配置文件
 ```shell

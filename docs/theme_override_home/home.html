@@ -6,11 +6,9 @@
 <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
 {% endblock %}
 
-
 {% block tabs %}
 {{ super() }}
 <style>
-    
     body {
         margin: 0;
         padding: 0;
@@ -20,7 +18,7 @@
     }
 
     .tx-container {
-        padding-top: 60px; /* 调整顶部留白 */
+        padding-top: 160px; /* 调整顶部留白 */
         background: linear-gradient(to bottom, var(--md-primary-fg-color), hsla(160deg,47%,55%,1) 99%,#fff 99%);
         text-align: center;
         padding-bottom: 20px; /* 调整底部留白 */
@@ -122,7 +120,7 @@
             <div class="tx-hero">
                 <div class="tx-hero__content">
                     <h1> Xiaoyu's NoteBook </h1>
-                    <p>个人新知识学习笔记，同时也是个人知识库</p>
+                    <p>希望能够：知、会、教</p>
                     <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}" class="md-button md-button--primary">
                         Get started
                     </a>
