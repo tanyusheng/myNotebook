@@ -80,25 +80,31 @@ nav:
       - myNotebook/树莓派/给树莓派设置静态IP.md
       - myNotebook/树莓派/树莓派如何开启SSH服务.md
   - Android:
+    - Android基础:
       - myNotebook/Android/Android学习笔记/Android UI基础入门.md
       - myNotebook/Android/Android学习笔记/Android UI常用组件.md
       - myNotebook/Android/Android学习笔记/Android UI高级控件.md
-      - myNotebook/Android/Android学习笔记/Android多线程.md
-      - myNotebook/Android/Framework/Framework面试总结.md
+      - myNotebook/Android/Android学习笔记/Handler通信机制.md
+      - myNotebook/Android/Android学习笔记/项目实战:小雨录屏.md
       - myNotebook/Android/Android学习笔记/Android动画处理与自定义View.md
       - myNotebook/Android/Android学习笔记/Android学习路线.md
       - myNotebook/Android/Android学习笔记/Android数据存储.md
       - myNotebook/Android/Android学习笔记/Android流行框架.md
       - myNotebook/Android/Android学习笔记/Android网络操作.md
-      - myNotebook/Android/Android学习笔记/Android高级应用.md
+      - myNotebook/Android/Android学习笔记/Android四大组件之Service.md
       - myNotebook/Android/Android学习笔记/项目实战:外卖点餐.md
       - myNotebook/Android/Android学习笔记/项目实战:小雨商城.md
       - myNotebook/Android/Android学习笔记/项目实战:小雨计步器.md
       - myNotebook/Android/Android学习笔记/项目实战:小雨阅读器.md
+    - Android Tools:
+      - myNotebook/Android/Tools/Android gradle学习笔记.md
+      - myNotebook/Android/Tools/Android小工具总结.md
+      - myNotebook/Android/Tools/机智云Android项目导入AS.md
+    - Android Framework:
+      - myNotebook/Android/Framework/Framework面试总结.md
       - myNotebook/Android/Framework/Framework学习与总结.md
-      - myNotebook/Android/Android gradle学习笔记.md
-      - myNotebook/Android/Android刷机.md
-      - myNotebook/Android/机智云Android项目导入AS.md
+    - Android Camera:
+      - myNotebook/Android/Camera/Android Camera2.md
       
   - Java:
     - myNotebook/Java/java知识提升.md

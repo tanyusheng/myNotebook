@@ -40,6 +40,8 @@ git reset --hard 版本号 #工作区、暂存区工作文件均被恢复
 git reset --mixed 版本号 # 工作区文件保留、暂存区文件被恢复，与git reset等价
 ```
 
+回退到上一个版本可以使用`HEAD^`
+
 ### Git 删除文件
 
 在工作区删除了某个文件，暂存区依然存在，如果要真正删除则需要再执行一次`git add .`或者使用`git rm --cached 文件标识名`的方式将文件在暂存区中删除掉；
@@ -130,3 +132,29 @@ git pull --rebase origin main
 * 跟新远程分支指针。
 `git fetch`不会改变本地仓库的状态，也不会跟新`main`分支，不会修改磁盘上的文件。
 `git pull`是指从远程仓库获取最新的提交并合并到本地分支中，相当于执行了`git fetch`和`git merge`两个命令。
+
+### git stash
+
+* 存（入栈）
+
+`git stash`
+
+`git stash save '注释'`
+
+* 取（出栈）
+
+`git stash pop`
+
+`git stash apply`（不出栈，类似于peek）
+
+* 清除
+
+`git stash drop`
+
+`git stash clear`
+
+* 查看
+
+ `git stash list`
+
+`git stash show + 栈索引`

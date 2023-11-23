@@ -16,11 +16,11 @@ Message
 
 MessageQueue
 
-![image-20230908193135391](localpicbed/Android多线程.assets/image-20230908193135391.png)
+![image-20230908193135391](localpicbed/Handler通信机制.assets/image-20230908193135391.png)
 
 ### Handler基本用法
 
-![image-20230908192947316](localpicbed/Android多线程.assets/image-20230908192947316.png)
+![image-20230908192947316](localpicbed/Handler通信机制.assets/image-20230908192947316.png)
 
 子线程创建一个message对象，设置相关属性后通过主线程的handler对象调用sendMessage方法发送出去；
 
@@ -220,7 +220,7 @@ public class DownloadActivity extends AppCompatActivity {
 >
 > 可能是Android11后文件读写引入了范围存储机制，传统文件读写方式已过时；但是花了很长时间依然没有解决
 >
-> ![image-20230909220323102](localpicbed/Android多线程.assets/image-20230909220323102.png)
+> ![image-20230909220323102](localpicbed/Handler通信机制.assets/image-20230909220323102.png)
 
 #### 优化Handler的内存泄露
 

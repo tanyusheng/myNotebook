@@ -1,8 +1,14 @@
-# UI基础入门
+# Android基础入门
 
+### 前言：
 
+从今天开始，我们开始分享Android客户端开发的基础知识。
 
-## 一、Android Studio使用指南
+## 一、工具指南
+
+工欲善其事必先利其器，我们首先介绍一下开发Android常用的集成开发环境。
+
+> 小雨在上大学期间，开发android应用用的还是Eclipse+ADT，后来接触到了Google推出的Android Studio搭配Gradle真正感受到了IDE强大。
 
 ### 1.Gradle构建工具
 
@@ -30,6 +36,8 @@ targetSdkVersion: 目标版本，
 
 dependencies: 依赖配置，依赖的库
 
+#### 常见Gradle编译错误及解决方案
+
 1. 当前项目不支持这个gradle版本
 
    原因：AndroidStudio版本高，Gradle版本低
@@ -38,9 +46,11 @@ dependencies: 依赖配置，依赖的库
 
 2. Gradle无法下载更新
 
-解决方案：修改Module的build.gradle
+​	解决方案：修改Module的build.gradle
 
-### 2. 中文乱码问题：
+### 2. 中文乱码问题
+
+当我们从远程仓库拉取的项目代码，使用AndroidStudio打开时可能会出现乱码，这一般是编码格式不一致导致的。一般将GBK编码或者GB2312与utf-8编码切换一下就能解决问题。
 
 修改编码主要从四个地方修改：
 
@@ -83,11 +93,11 @@ dependencies: 依赖配置，依赖的库
 
 移动方法的上下顺序：Cmd + Shift + ↑或↓
 
-### 4. 调试技巧
+## 二、 认识Activity
 
-写日志、断点
+本节简单介绍一下Activity（活动），作为Android四大组件之一，作为学习Android开发，创建的第一个HelloWorld程序就会接触到Activity。
 
-### 5. 认识Activity
+我们可以理解成Activity作为一个应用程序组件，它在屏幕上提供了一个区域，允许用户在上面做一些交互性的操作。可以将Activity理解成绘制用户界面的窗口，这个窗口可以填满整个屏幕或者浮动在其他窗口上方。
 
 MainActivity
 
@@ -122,9 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-## 二、UI基础控件
+## 三、UI基础控件
 
 View是Android所有UI组件的父类，TextView、Button、ImageView、EditText、ProgressBar
 
@@ -277,7 +285,7 @@ public class ProgressActivity extends AppCompatActivity {
 Toast.makeText(this,"姓名或者密码不能为空",Toast.LENGTH_SHORT).show();
 ```
 
-## 三、布局
+## 四、布局
 
 ### 1.LinearLayout
 
@@ -482,7 +490,7 @@ Start等同于Left，End等同于Right
 
 > 减少嵌套、扁平化
 
-## 四、基础控件
+## 五、基础控件
 
 > 多看Android官方文档：https://developer.android.com/reference
 
@@ -566,7 +574,7 @@ seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 
 
-## 五、选餐UI综合案例
+## 六、选餐UI综合案例
 
 项目类教程学习方法
 
