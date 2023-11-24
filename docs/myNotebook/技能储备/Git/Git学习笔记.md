@@ -158,3 +158,7 @@ git pull --rebase origin main
  `git stash list`
 
 `git stash show + 栈索引`
+
+### git checkout
+
+如果文件没有被添加到暂存区，使用`git checkout 文件路径`可以恢复对文件的修改只上一次提交的状态
