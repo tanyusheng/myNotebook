@@ -103,6 +103,7 @@ nav:
     - Android Framework:
       - myNotebook/Android/Framework/Framework面试总结.md
       - myNotebook/Android/Framework/Framework学习与总结.md
+      - myNotebook/Android/Framework/Binder基础.md
     - Android Camera:
       - myNotebook/Android/Camera/Android Camera2.md
       
