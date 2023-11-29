@@ -133,6 +133,8 @@ git pull --rebase origin main
 `git fetch`不会改变本地仓库的状态，也不会跟新`main`分支，不会修改磁盘上的文件。
 `git pull`是指从远程仓库获取最新的提交并合并到本地分支中，相当于执行了`git fetch`和`git merge`两个命令。
 
+## Git 常用技巧
+
 ### git stash
 
 * 存（入栈）
