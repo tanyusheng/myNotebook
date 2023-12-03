@@ -164,3 +164,17 @@ git pull --rebase origin main
 ### git checkout
 
 如果文件没有被添加到暂存区，使用`git checkout 文件路径`可以恢复对文件的修改只上一次提交的状态
+
+### git diff
+
+查看工作空间中文件修改的具体内容，要求是还提交到暂存区的文件；如果文件已经添加到暂存区，还要查看修改的细节则需要使用命令`git diff --staged`
+
+### git reset
+
+`git reset --soft HEAD^ `撤销上一次commit，回到git add .的状态
+
+`git reset --mixed HEAD^ `撤销上一次commit和add，回到本地工作空间编辑的状态；
+
+`git reset --hard HEAD^ `撤销上一次对文件的所有修改；
+
+> 无论是mixed或者soft类型的reset操作，都能让IDEA等能跟踪Git状态的IDE显示出Git文本修改的提示色块
