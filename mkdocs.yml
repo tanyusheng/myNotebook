@@ -85,6 +85,7 @@ nav:
       - myNotebook/Android/Android学习笔记/Android UI常用组件.md
       - myNotebook/Android/Android学习笔记/Android UI高级控件.md
       - myNotebook/Android/Android学习笔记/Handler通信机制.md
+      - myNotebook/Android/Android学习笔记/ConditionVariable实现多线程同步.md
       - myNotebook/Android/Android学习笔记/项目实战:小雨录屏.md
       - myNotebook/Android/Android学习笔记/Android动画处理与自定义View.md
       - myNotebook/Android/Android学习笔记/Android学习路线.md
